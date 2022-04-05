@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import ProductList from './components/ProductList';
+import Delivery from './components/Delivery';
+import Footer from './components/Footer';
+import { Container } from '@mui/material';
+import { useState } from 'react';
+
 
 function App() {
+  const [street, setStreet] = useState('')
+  const [house, setHouse] = useState('')
+  const [tooltip, setTooltip] = useState(false)
+  const [delivery, setDelivery] = useState(true)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Container>
+        <Header delivery={delivery} setTooltip={setTooltip} street={street} house={house} setStreet={setStreet} setHouse={setHouse}/>
+        <Delivery delivery={delivery} setDelivery={setDelivery} tooltip={tooltip} setTooltip={setTooltip}  street={street} house={house} setStreet={setStreet} setHouse={setHouse}/>
+        <ProductList  />
+        <Footer />
+      </Container>
   );
 }
 
